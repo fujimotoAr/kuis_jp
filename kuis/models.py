@@ -22,16 +22,9 @@ class Questions(models.Model):
         return self.text
 
 class Answer(models.Model):
-    question=models.ForeignKey(Questions,on_delete=models.CASCADE)
     quiz=models.ForeignKey(Quiz,on_delete=models.CASCADE)
     username=models.CharField(max_length=1000, unique=True)
-    answer=models.CharField(max_length=100)
-    """ abaikan ini
-        SELECT count(*) 
-        FROM Questions 
-        INNER JOIN Quiz on Quiz.id=Questions.quiz_id
-        WHERE question_id=Questions.id and answer=Questions.corrans;
-    """
+    score=models.IntegerField(default=0)
     def __str__ (self):
         return self.answer
 
