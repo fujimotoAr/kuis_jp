@@ -1,0 +1,10 @@
+{% if quiz_list %}
+    <h1>Quizzes: </h1>
+    <ul>
+    {% for quiz in quiz_list %}
+        <li><a href="/kuis/{{ quiz.id }}/">{{ quiz.judul }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Tidak ada kuis</p>
+{% endif %}

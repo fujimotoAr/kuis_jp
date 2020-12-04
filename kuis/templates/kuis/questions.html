@@ -1,0 +1,17 @@
+{% if question_list %}
+    <h1>Questions: </h1>
+    <ul>
+    {% for question in question_list %}
+        <p>{{forloop.counter}}. {{question.text}}</p>
+        <form method="post">
+            <input type="radio" name="choice" id="choice1" value="{{ question.c1 }}">
+            <label for="choice1">{{ question.c1 }}</label><br>
+
+            <input type="radio" name="choice" id="choice2" value="{{ question.c2 }}">
+            <label for="choice2">{{ question.c2 }}</label><br>
+            <!-- <input type="submit" value="Submit"> -->
+        </form>
+        
+    {% endfor %}
+    </ul>
+{% endif %}
