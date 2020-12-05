@@ -4,7 +4,6 @@ from django.core import serializers
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-# Create your views here.
 
 def index(request):
     quiz_list=Quiz.objects.order_by('id')
