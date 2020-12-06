@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Quiz,Questions,Answer
 from django.core import serializers
 from django.http import HttpResponse,JsonResponse
+from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
 import json
 
@@ -34,7 +35,11 @@ def answer(request):
     output_dictionary.update({"score":hitung_true * 20})
     
     #MASUKIN KE DATABASE
-    add_database=Answer.objects.create(username=data['username'],quiz_id=data['id'],score=output_dictionary['score'])
+    try:
+        add_database=Answer.objects.create(username=data['username'],quiz_id=data['id'],score=output_dictionary['score'])
+    except IntegrityError:
+        add_database=Answer.objects.update(username=data['username'],quiz_id=data['id'],score=output_dictionary['score'])
+
     ###
     
     return JsonResponse(output_dictionary)
