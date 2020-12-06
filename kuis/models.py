@@ -21,7 +21,7 @@ class Questions(models.Model):
 
 class Answer(models.Model):
     quiz=models.ForeignKey(Quiz,on_delete=models.CASCADE)
-    username=models.CharField(max_length=100, unique=True)
+    username=models.CharField(max_length=100)
     score=models.IntegerField(default=0)
     def __str__ (self):
         return self.answer
