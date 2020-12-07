@@ -19,13 +19,16 @@ def question(request):
 @csrf_exempt
 def answer(request):
     data = json.loads(request.body.decode('utf-8'))
-    output_dictionary={ }
+    output_dictionary={
+        "id":data['id'],
+        "username":data['username']
+     }
     hitung_true=0
-    for i in range(1,6):
-        s="q"+str(i)
+    for i in range(1,6): #1 sampai 5
+        s="q"+str(i) #q1, q2, ...
         cur=get_list_or_404(Questions,quiz_id=data['id'])
         for j in cur:
-            if int(j.id) % 5 == int(i) % 5:
+            if int(j.id) % 5 == int(i) % 5: #question.id: 1,2,3,4,5,6,7
                 if(data[s]==j.corrans):
                     output_dictionary.update({s:"true"})
                     hitung_true+=1
@@ -37,9 +40,10 @@ def answer(request):
     #MASUKIN KE DATABASE
     try:
         add_database=Answer.objects.create(username=data['username'],quiz_id=data['id'],score=output_dictionary['score'])
-    except IntegrityError:
+    except IntegrityError: #jika ada duplicate
         add_database=Answer.objects.update(username=data['username'],quiz_id=data['id'],score=output_dictionary['score'])
 
     ###
+
     
     return JsonResponse(output_dictionary)
