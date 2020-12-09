@@ -4,14 +4,14 @@ from django.dispatch import receiver
 
 class Quiz(models.Model):
     id = models.CharField(primary_key=True,max_length=100, unique=True)
-    judul = models.CharField(max_length=1000)
+    judul = models.CharField(max_length=100)
     class Meta:
         def __str__(self):
             return self.judul
 
 class Questions(models.Model):
     id = models.AutoField(primary_key=True)
-    text = models.CharField(max_length=1000)
+    text = models.CharField(max_length=100)
     corrans=models.CharField(max_length=100)
     c1=models.CharField(max_length=100)
     c2=models.CharField(max_length=100)

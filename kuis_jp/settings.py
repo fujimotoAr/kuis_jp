@@ -76,22 +76,22 @@ WSGI_APPLICATION = 'kuis_jp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if 'database-1.cnkikofrokpg.us-east-1.rds.amazonaws.com' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            #'NAME': 'kuis',
-            #'USER': 'root',
-            #'PASSWORD': '',
-            #'HOST': 'localhost',
-            #'PORT': '3306',
-            'NAME': os.environ['web_jp'],
-            'USER': os.environ['admin'],
-            'PASSWORD': os.environ['yuk_B1sa'],
-            'HOST': os.environ['database-1.cnkikofrokpg.us-east-1.rds.amazonaws.com'],
-            'PORT': os.environ['3306'],
-        }
+#if 'database-1.cnkikofrokpg.us-east-1.rds.amazonaws.com' in os.environ:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'kuis',
+        #'USER': 'root',
+        #'PASSWORD': '',
+        #'HOST': 'localhost',
+        #'PORT': '3306',
+        'NAME': 'web_jp',
+        'USER': 'admin',
+        'PASSWORD': 'yuk_B1sa',
+        'HOST': 'database-1.cnkikofrokpg.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
+}
 
 
 # Password validation
