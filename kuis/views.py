@@ -22,7 +22,7 @@ def answer(request):
     output_dictionary={
         "id":data['id'],
         "username":data['username']
-     }
+    }
     hitung_true=0
     for i in range(1,6): #1 sampai 5
         s="q"+str(i) #q1, q2, ...
